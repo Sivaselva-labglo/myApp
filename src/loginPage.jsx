@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Button  from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
 
@@ -22,7 +22,7 @@ export default function LoginPage() {
     axios.post('https://reqres.in/api/login', userCredentials)
       .then((success) => {
         localStorage.setItem('token', success.data.token)
-        navigate(`/${userCredentials.email}`)
+        navigate(`/name`)
       })
       .catch((error) => setErrormsg(error.response.data.error))
   }
