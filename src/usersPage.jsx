@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import  Button  from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu"
 import LogoutIcon from "@mui/icons-material/Logout"
 
 import './loginPage.css'
-import { AppBar, Avatar, Drawer, IconButton, Menu, MenuItem, Tooltip, Typography, Box, Divider, List, ListItem,
-  ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import {
+  AppBar, Avatar, Drawer, IconButton, Menu, MenuItem, Tooltip, Typography, Box, Divider, List, ListItem,
+  ListItemButton, ListItemIcon, ListItemText
+} from "@mui/material";
 import InboxIcon from "@mui/icons-material/Inbox"
 import MailIcon from "@mui/icons-material/Mail"
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
@@ -21,6 +23,7 @@ export default function UsersPage() {
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [open, setOpen] = useState(false)
+  const drawerWidth = 250;
 
   console.log('Params ', userspage);
 
@@ -80,46 +83,47 @@ export default function UsersPage() {
 
   return (
     <div>
-      <AppBar position='static'>
-           <Drawer
-           sx={{
-            width: 250,
+        <Box>
+      <AppBar position='fixed' sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
+        <Drawer
+          sx={{
+            width: drawerWidth,
             flexShrink: 0,
             '& .MuiDrawer-paper': {
-              width: 250,
+              width: drawerWidth,
               boxSizing: 'border-box',
             },
           }}
           variant="persistent"
           anchor="left"
           open={open}>
-            <Box>
+          <Box>
             <IconButton>
-                <ChevronLeftIcon onClick={closeDrawer} 
-                sx={{display:'flex',  marginLeft:25, marginTop:3, marginBottom:3}}/>
+              <ChevronLeftIcon onClick={closeDrawer}
+                sx={{ display: 'flex', marginLeft: 25, marginTop: 3, marginBottom: 3 }} />
             </IconButton>
-            </Box>
-            <Divider/>
-            <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-                <Typography>Modal</Typography>
-           </Drawer>
+          </Box>
+          <Divider />
+          <List>
+            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Typography>Modal</Typography>
+        </Drawer>
         {
           (user.data)?.filter((el) => el.email === userspage).map((el, index) => {
             return (
               <div key={index}>
-                <MenuIcon onClick={openDrawer} sx={{ ":hover" : {cursor:'pointer'},color:'black'}}/>
-                <IconButton onClick={handleOpenUserMenu} sx={{ marginLeft: 220, marginTop: 2, marginBottom: 2 }}>
+                <MenuIcon onClick={openDrawer} sx={{ ":hover": { cursor: 'pointer' }, color: 'black' }} />
+                <IconButton onClick={handleOpenUserMenu} sx={{ marginLeft: 190, marginTop: 3, marginBottom: 3 }}>
                   <Tooltip title='view profile'>
                     <Avatar src={el.avatar}></Avatar>
                   </Tooltip>
@@ -193,6 +197,7 @@ export default function UsersPage() {
             : <button onClick={previousPage}>Previous Page</button>
         }
       </center>
+      </Box>
     </div >
   )
 }
