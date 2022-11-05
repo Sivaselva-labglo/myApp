@@ -22,7 +22,7 @@ export default function LoginPage() {
     axios.post('https://reqres.in/api/login', userCredentials)
       .then((success) => {
         localStorage.setItem('token', success.data.token)
-        navigate(`/name`)
+        navigate(`/home`)
       })
       .catch((error) => setErrormsg(error.response.data.error))
   }
