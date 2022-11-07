@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Badge } from "@mui/material";
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import GroupIcon from '@mui/icons-material/Group';
 
 export default function Groups() {

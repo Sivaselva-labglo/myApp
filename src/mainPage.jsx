@@ -17,14 +17,14 @@ import { CalendarMonthRounded } from "@mui/icons-material";
 
 import './loginPage.css'
 import SearchBar from "./searchBar";
-import Messages from "./messagesComponent";
-import Feed from "./feedComponent";
-import Groups from "./groupsComponent";
-import Live from "./liveComponent";
-import Courses from "./coursesComponent";
-import Support from "./supportComponent";
-import Events from "./eventsComponent";
-import Announcement from "./announcementComponent";
+import Messages from "./components/messagesComponent";
+import Feed from "./components/feedComponent";
+import Groups from "./components/groupsComponent";
+import Live from "./components/liveComponent";
+import Courses from "./components/coursesComponent";
+import Support from "./components/supportComponent";
+import Events from "./components/eventsComponent";
+import Announcement from "./components/announcementComponent";
 
 
 export default function MainPage() {
@@ -76,7 +76,7 @@ export default function MainPage() {
                     </IconButton>
 
                     <Menu
-                      sx={{ mt: '60px', }} id="menu-appbar" anchorEl={anchorElUser}
+                      sx={{ mt: '70px', }} id="menu-appbar" anchorEl={anchorElUser}
                       anchorOrigin={{
                         vertical: 'top', horizontal: 'right',
                       }}

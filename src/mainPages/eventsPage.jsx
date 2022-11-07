@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { CircularProgress, Typography } from "@mui/material";
+import Loaderpage from "../loader";
 
 export default function Eventspage() {
-    const [state, setState] = useState(true)
-    console.log('eventsPage')
+  const [load,setLoad] = useState(true)
 
-    useEffect(() => {
-        setTimeout(()=>setState(false), 1000)
-    }, [])
-    return (
-        <div>
-            {
-                (state)
-                    ? <center><CircularProgress sx={{ mt: '300px' }}/>
-                    </center>                   : <center>
-                        <Typography sx={{ mt: '300px' }}>No events scheduled</Typography>
-                    </center>
-            }
-        </div>
-    )
+  useEffect(() => {
+    setTimeout(() => setLoad(false), 1000)
+    
+  }, [])
+  
+  return (
+    <div>
+      <Loaderpage loader={load}/>
+      <center>
+      <Typography sx={{ mt: '300px' }}>No events scheduled</Typography>
+      </center>
+    </div>
+  )
 }

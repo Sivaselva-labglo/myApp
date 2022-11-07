@@ -4,7 +4,7 @@ import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { React, useState } from "react";
-import CardComponent from "./cardComponent";
+import CardComponent from "./components/cardComponent";
 
 export default function Profilesetting() {
 
@@ -62,7 +62,7 @@ export default function Profilesetting() {
         <CardComponent title='I wanna be' msgs={wannabe} state={wannabeState}
           updateMsg={updateWannabe} editMsg={editWannabe} />
         <br />
-        <Button variant="contained" onClick={confirmState} sx={{color:'primary'}}>Save</Button>
+
         {
           [{ name: 'Nikkmartin01', icon: <MusicNoteIcon /> }, { name: 'Nikkmartin01', icon: <InstagramIcon /> },
           { name: 'Nikkmartin01', icon: <LinkedInIcon /> }].map((el, index) => {
@@ -72,7 +72,7 @@ export default function Profilesetting() {
                   <CardContent>
                     <Toolbar>{el.icon} {el.name}
                       <Typography sx={{ marginLeft: '500px' }}>Publicly view</Typography >
-                      <Switch /> 
+                      <Switch />
                       <EditIcon sx={{ marginLeft: '5px' }} />
                     </Toolbar>
                   </CardContent>
@@ -81,6 +81,7 @@ export default function Profilesetting() {
             )
           })
         }
+        <Button variant="contained" onClick={confirmState} sx={{ color: 'primary' }}>Save</Button>
       </Box>
     </center>
   )
